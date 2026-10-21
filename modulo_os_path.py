@@ -219,18 +219,106 @@ import math, random
 #Todo el código antes del yield equivale a la fase de entrada (__enter__),
 #  y el bloque finally actúa como la salida (__exit__)
 
+
 #modulos os y pathlib en python
 import os, pathlib
 #obtener la direccion actual
 #print(os.getcwd())
 
 #cambiara otra carpeta 
-carpeta = pathlib.Path(__file__).resolve().parent / 'Documentos'
-if carpeta.is_dir():
-    os.chdir(carpeta)
-    print(f'Carpeta actual: {os.getcwd()}')
-else:
-    print(f'No se encontró la carpeta: {carpeta}')
+# carpeta = pathlib.Path(__file__).resolve().parent / 'Documentos'
+# if carpeta.is_dir():
+#     os.chdir(carpeta)
+#     print(f'Carpeta actual: {os.getcwd()}')
+# else:
+#     print(f'No se encontró la carpeta: {carpeta}')
+
+#leer el contenido de un archivo
+#archivo = open('demo.txt', 'r')
+# for linea in archivo:
+#     print(linea)
+#archivo.close()
+
+#leer la primera linea
+#archivo = open('demo.txt', 'r')
+#linea = archivo.readline()
+#print(linea)
+
+#lista los elementos del directorio actual
+#elementos = os.listdir('.')
+#os.mkdir("imagenes"): #Crea un único directorio
+#os.remove('')
+#print(elementos)
+
+#Crear, renombrar y eliminar:
+#os.makedirs("a/b/c", exist_ok=True): #Crea carpetas anidadas de forma recursiva. 
+#El parámetro exist_ok=True evita que falle si la carpeta ya existe
+#os.remove("archivo.txt"): #Elimina un archivo
+#os.rmdir("carpeta"): #Elimina un directorio vacío
+#os.rename("viejo.txt", "nuevo.txt"): #Renombra o mueve archivos y directorios
+
+#Recorrer estructuras de carpetas con os.walk(): 
+# Permite navegar de forma recursiva por un árbol de directorios 
+# generando tuplas de la forma (ruta_actual, subcarpetas, archivos)
+
+#for root, dirs, files in os.walk('.'):
+#    print(f"Carpeta: {root} | Archivos: {files}")# [24, 25]
+
+#Variables de entorno: Accede a las variables del sistema 
+# usando os.environ.get("CLAVE", "valor_por_defecto") 
+# sin riesgo de lanzar excepciones
+
+#2. Manejo de Rutas: os.path vs. pathlib
+#Construir rutas concatenando texto manualmente causa errores 
+# debido a las diferencias de separadores entre sistemas operativos 
+# (\ en Windows frente a / en Unix)
+#Enfoque Tradicional (os.path — basado en cadenas)
+#os.path.join("carpeta", "archivo.txt")#: Une partes de rutas insertando 
+# el separador correcto
+#os.path.exists("ruta"), os.path.isfile("ruta"), os.path.isdir("ruta")
+#: Comprueban la existencia y tipo de elemento
+#os.path.splitext("documento.pdf")
+# : Separa el nombre base de la extensión (retorna ('documento', '.pdf'))
+
+# import os
+# ruta = os.path.join("nueva_carpeta_python", "modulo_os_path.py")# [29, 36]
+# if os.path.exists(ruta):# [32, 33]
+#     print(f"Archivo encontrado en: {ruta}")
+
+#Enfoque Moderno (pathlib — orientado a objetos, Python 3.4+)
+#El módulo pathlib representa las rutas mediante objetos Path 
+# y utiliza el operador / para combinarlas de forma intuitiva
+
+# from pathlib import Path
+# base_dir = Path("Desktop")
+# archivo = base_dir / "nueva_carpeta_python" / "modulo_os_path" #[5, 6, 37]
+
+# if archivo.exists():# [5, 38, 39]
+#     print(f"Nombre: {archivo.name}, Extensión: {archivo.suffix}")# [5, 39, 40]
+#    contenido = archivo.read_text()# [38, 39]
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
