@@ -1,0 +1,3 @@
+*argumentos y **argumentos de diccionario
+funcion crear archivo txt
+modulo mas decorador dentro del modulo
