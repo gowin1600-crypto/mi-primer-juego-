@@ -1,3 +1,4 @@
+#**********pasar varios argumentos y varios argumentos de diccionario**************
 # def calculadora_numeros(*numeros):#*args
 #     resultado = 1
 #     for numero in numeros:
@@ -43,17 +44,17 @@
 
 # Llamando a la función combinando todo:
 #---- registrar_viaje(
-#     "Asturias",                           # Argumento obligatorio (destino)
+#con este for ya no se llama al error solo se itera sobre el valor de la funcion#     "Asturias",                           # Argumento obligatorio (destino)
 #     "Oviedo", "Gijón", "Ibias",            # *args (lugares_visita)
 #     hotel="Parador Nacional", costo=500   # **kwargs (detalles_adicionales)
 # )
 
+#*****************listas con .append y yeil para no saturar la memoria ram**************
 # def obtener_numeros_lista():
 #     resultado = []
 #     for i in range(3):
 #         resultado.append(i)
 #     return resultado  # Devuelve la lista completa con todos los datos cargados
-
 #---numeros = obtener_numeros_lista()
 #---print(numeros)  # [0, 1, 2]
 
@@ -62,19 +63,18 @@
 #         yield i  # Pausa la ejecución y entrega el número "al vuelo" [4]
 
 #--- gen = obtener_numeros_generador()
-
 # # Podemos obtener los valores usando la función next() [11]:
 #--- print(next(gen))  # Salida: 0 [11]
 #--- print(next(gen))  # Salida: 1 [11]
 #--- print(next(gen))  # Salida: 2 [11]
 # Si llamamos next() otra vez, dará el error StopIteration porque ya terminó [11, 12].
 #Si usas un bucle for, Python se encarga de llamar a next() y de capturar el error StopIteration de forma automática por ti, por lo que nunca lo verás fallar
-
 #---for numero in obtener_numeros_generador():
     #---print(numero)
+#con este for ya no se llama al error solo se itera sobre el valor de la funcion
 
+#***********decoradores para agregar funcionalidad al otra funcion*****************
 from functools import wraps
-
 # def registrar_ejecucion(funcion_original):
 #     # Usamos @wraps para conservar los metadatos de la función original [10, 11]
 #     @wraps(funcion_original)
@@ -99,7 +99,6 @@ from functools import wraps
 
 import time
 # def func_decorador(FuncionOriginal):
-
 #     def func_modificada(n):
 #         inicio = time.time()
 #         FuncionOriginal(n)
@@ -112,8 +111,8 @@ import time
 # def imprimir_numero(n):
 #     for i in range(n):
 #         print(i)
-
 #---imprimir_numero(50)
+
 
 # Código problemático:
 # def agrega(num, target=[]):
@@ -297,7 +296,59 @@ import os, pathlib
 #     print(f"Nombre: {archivo.name}, Extensión: {archivo.suffix}")# [5, 39, 40]
 #    contenido = archivo.read_text()# [38, 39]
 
- 
+# try y except ejemplos como usarlos
+# numero = int(input('ingrese un numero: '))
+# division = 10/numero
+# print(division)
+# #que pasa si ingreso un string en lugar de un numero
+#------salta un error----------
+# File "c:\Users\javier\Desktop\nueva_carpeta-python\modulo_os_path.py", line 301, in <module>
+#     numero = int(input('ingrese un numero: '))
+# ValueError: invalid literal for int() with base 10: 'javier'
+# try:
+#     numero = int(input('ingrese un numero: '))
+#     division = 10/numero
+#     print(division)
+# except:
+#     print('tienes que ingresar un numero entero')
+#para eso se usa el try y except para validar fragmentos de codigo
+#-----------clases y objetos------------------
+class Perrro:
+    especie = 'canis lupus familiaris'
+    def __init__(self,nombre,edad):
+        self.nombre = nombre
+        self.edad = edad
+        print('se ejecuto el constructor')
+    def ladrar(self):
+        print('el perro esta ladrando')
+#se crea el objeto de la clase para que se ejecuter el constructor
+mi_perro = Perrro('firulais', 30)
+#acceder a los atributos y metodos de la clase
+#para ejecutar un metodo ai que llamarlo para que se ejecute
+print(mi_perro.nombre)
+print(mi_perro.edad)
+#llamar al metodo para que ejecute su proceso de operacion
+mi_perro.ladrar()
+#eliminar un objeto con "del" se usa en la creacion de videojuegos
+#para que un objeto ya no ocupe memoria al ser eliminado
+try:
+    del mi_perro
+    print(mi_perro.nombre)
+except:
+    print('el objeto ya no existe')
+#aqui se uso el try,except para llamar al error
+
+        
+
+
+
+
+
+
+
+
+
+
 
 
 
