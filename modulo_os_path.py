@@ -1,77 +1,4 @@
-#**********pasar varios argumentos y varios argumentos de diccionario**************
-# def calculadora_numeros(*numeros):#*args
-#     resultado = 1
-#     for numero in numeros:
-#         resultado *= numero
-#     return resultado
-# Podemos pasarle cualquier cantidad de números:
-#----print(calculadora_numeros(2, 3, 4))  # Salida: 24
 
-# def registrar_producto(**detalles):#**kargs
-#     for clave, valor in detalles.items():
-#         print(f"{clave} = {valor}")
-# Pasamos argumentos con nombre libremente:
-#----registrar_producto(nombre="Laptop", precio=800, ram="16GB")
-# Salida:
-# nombre = Laptop
-# ram = 16GB
-# precio = 800
-
-# def hacer_pedido(ingrediente_principal, *otros_ingredientes):
-#     print(f"Preparando pizza de: {ingrediente_principal}")
-    
-#     if otros_ingredientes:
-#         print("Ingredientes adicionales:")
-#         for ingrediente in otros_ingredientes:
-#             print(f"- {ingrediente}")
-# Ejemplo de uso:
-#---hacer_pedido("queso", "peperoni", "champiñones", "aceitunas")
-
-# def registrar_viaje(destino, *lugares_visita, **detalles_adicionales):#*args y *kargs en una funcion
-#     print(f"✈️ Destino principal: {destino}")
-    
-#     # *args agrupa los lugares adicionales en una tupla
-#     if lugares_visita:
-#         print("📍 Lugares planeados para visitar:")
-#         for lugar in lugares_visita:
-#             print(f"  - {lugar}")
-            
-#     # **kwargs agrupa los detalles en un diccionario
-#     if detalles_adicionales:
-#         print("detalles adicionales")
-#         for clave, valor in detalles_adicionales.items():
-#             print(f"  - {clave.capitalize()}: {valor}")
-
-# Llamando a la función combinando todo:
-#---- registrar_viaje(
-#con este for ya no se llama al error solo se itera sobre el valor de la funcion#     "Asturias",                           # Argumento obligatorio (destino)
-#     "Oviedo", "Gijón", "Ibias",            # *args (lugares_visita)
-#     hotel="Parador Nacional", costo=500   # **kwargs (detalles_adicionales)
-# )
-
-#*****************listas con .append y yeil para no saturar la memoria ram**************
-# def obtener_numeros_lista():
-#     resultado = []
-#     for i in range(3):
-#         resultado.append(i)
-#     return resultado  # Devuelve la lista completa con todos los datos cargados
-#---numeros = obtener_numeros_lista()
-#---print(numeros)  # [0, 1, 2]
-
-# def obtener_numeros_generador():
-#     for i in range(3):
-#         yield i  # Pausa la ejecución y entrega el número "al vuelo" [4]
-
-#--- gen = obtener_numeros_generador()
-# # Podemos obtener los valores usando la función next() [11]:
-#--- print(next(gen))  # Salida: 0 [11]
-#--- print(next(gen))  # Salida: 1 [11]
-#--- print(next(gen))  # Salida: 2 [11]
-# Si llamamos next() otra vez, dará el error StopIteration porque ya terminó [11, 12].
-#Si usas un bucle for, Python se encarga de llamar a next() y de capturar el error StopIteration de forma automática por ti, por lo que nunca lo verás fallar
-#---for numero in obtener_numeros_generador():
-    #---print(numero)
-#con este for ya no se llama al error solo se itera sobre el valor de la funcion
 
 #***********decoradores para agregar funcionalidad al otra funcion*****************
 from functools import wraps
@@ -313,32 +240,118 @@ import os, pathlib
 #     print('tienes que ingresar un numero entero')
 #para eso se usa el try y except para validar fragmentos de codigo
 #-----------clases y objetos------------------
-class Perrro:
-    especie = 'canis lupus familiaris'
-    def __init__(self,nombre,edad):
-        self.nombre = nombre
-        self.edad = edad
-        print('se ejecuto el constructor')
-    def ladrar(self):
-        print('el perro esta ladrando')
+# class Perrro:
+#     especie = 'canis lupus familiaris'
+#     def __init__(self,nombre,edad):
+#         self.nombre = nombre
+#         self.edad = edad
+#         print('se ejecuto el constructor')
+#     def ladrar(self):
+#         print('el perro esta ladrando')
 #se crea el objeto de la clase para que se ejecuter el constructor
-mi_perro = Perrro('firulais', 30)
+#mi_perro = Perrro('firulais', 30)
 #acceder a los atributos y metodos de la clase
 #para ejecutar un metodo ai que llamarlo para que se ejecute
-print(mi_perro.nombre)
-print(mi_perro.edad)
+#print(mi_perro.nombre)
+#print(mi_perro.edad)
 #llamar al metodo para que ejecute su proceso de operacion
-mi_perro.ladrar()
+#mi_perro.ladrar()
 #eliminar un objeto con "del" se usa en la creacion de videojuegos
 #para que un objeto ya no ocupe memoria al ser eliminado
-try:
-    del mi_perro
-    print(mi_perro.nombre)
-except:
-    print('el objeto ya no existe')
+# try:
+#     del mi_perro
+#     print(mi_perro.nombre)
+# except:
+#     print('el objeto ya no existe')
 #aqui se uso el try,except para llamar al error
+ 
+#************encapsular atributos privados en una clase******************
+# class Auto:
+#     def __init__(self, marca, modelo, año):
+#         self.__marca = marca
+#         self.__modelo = modelo
+#         self.año = año
+# #definir funciones para llamar al atributo privado
+#     def get_marca(self):
+#         return self.__marca
+    
+#     def get_modelo(self):
+#         return self.__modelo
+# #el metodo set_marca(self):
+# # se puede cambiar el atributo privado    
+# #crear el objeto de la clase
+# mi_auto = Auto('sedan','datsun',2026)
+# print(mi_auto.año) #si se puede acceder al atributo año
+# #aqui salta un error ya que no se puede accceder al arributo __modelo
+# #print(mi_auto.__modelo)
+# #aqui se puede llamar al atributo privado
+# print(mi_auto.get_marca())
+# print(mi_auto.get_modelo())
 
-        
+#*************herencia de clases****************
+# las clases derivadas pueden heredar atributos y metodos de las clase bases
+# lo que permite reutilizar el codigo
+
+class Clase_Base:
+    def __init__(self):
+        print('constructor de la clase base')
+    def metodo_clase(self):
+        print('metodo de la clase base')
+
+class Clase_Derivada(Clase_Base):
+    pass
+# si eliminamos el constructor de la clase derivada se toma el otro constructor
+    #def __init__(self):
+        # print('constructor de la clase Derivada')
+#si establecemos otro metodo_clase se tomara este metodo
+    def metodo_clase(self):
+        print('metodo de la clase_Derivada')
+
+obj = Clase_Derivada()
+obj.metodo_clase()
+
+#************el metodo super mantiene el construcr de la clase_base
+class Super_base:
+    def __init__(self):
+        print('consrructor de la clase Super_base')
+
+class Derivada_super(Super_base):
+    def __init__(self):
+        super().__init__()# este super mantiene el constructor de la clase base
+        print('constructor de la clase Derivada_super')
+# al crear el objeto se mantienen ambos constructores
+obj = Derivada_super()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

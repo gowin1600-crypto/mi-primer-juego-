@@ -1,3 +1,53 @@
-*argumentos y **argumentos de diccionario
-funcion crear archivo txt
-modulo mas decorador dentro del modulo
+#**********pasar varios argumentos y varios argumentos de diccionario**************
+def calculadora_numeros(*numeros):#*args
+    resultado = 1
+    for numero in numeros:
+        resultado *= numero
+    return resultado
+#Podemos pasarle cualquier cantidad de números:
+print(calculadora_numeros(2, 3, 4)) 
+
+def registrar_producto(**detalles):#**kargs
+    for clave, valor in detalles.items():
+        print(f"{clave} = {valor}")
+
+#Pasamos argumentos con nombre libremente:
+registrar_producto(nombre="Laptop", precio=800, ram="16GB")
+#Salida:
+#nombre = Laptop
+#ram = 16GB
+#precio = 800
+
+def hacer_pedido(ingrediente_principal, *otros_ingredientes):
+    print(f"Preparando pizza de: {ingrediente_principal}")
+  
+    if otros_ingredientes:
+        print("Ingredientes adicionales:")
+        for ingrediente in otros_ingredientes:
+            print(f"- {ingrediente}")
+#Ejemplo de uso:
+hacer_pedido("queso", "peperoni", "champiñones", "aceitunas")
+
+#*****************listas con .append y yeil para no saturar la memoria ram**************
+def obtener_numeros_lista():
+    resultado = []
+    for i in range(3):
+        resultado.append(i)
+    return resultado  # Devuelve la lista completa con todos los datos cargados
+numeros = obtener_numeros_lista()
+print(numeros)  # [0, 1, 2]def obtener_numeros_generador():
+
+def obtener_numeros_generador():
+    for j in range(3):
+        yield j 
+    
+print(next(gen))  # Salida: 0 
+print(next(gen))  # Salida: 1 
+print(next(gen))  # Salida: 2 
+# Si llamamos next() otra vez, dará el error StopIteration porque ya terminó [11, 12].
+# Si usas un bucle for, Python se encarga de llamar a next() y de capturar el error StopIteration de forma automática por ti, por lo que nunca lo verás fallar
+for numero in obtener_numeros_generador():
+    print(numero)
+#con este for ya no se llama al error solo se itera sobre el valor de la funcion
+
+
