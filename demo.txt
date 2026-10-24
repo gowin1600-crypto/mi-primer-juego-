@@ -50,4 +50,45 @@ for numero in obtener_numeros_generador():
     print(numero)
 #con este for ya no se llama al error solo se itera sobre el valor de la funcion
 
+#***********decoradores para agregar funcionalidad al otra funcion*****************
+from functools import wraps
+def registrar_ejecucion(funcion_original):
+    # Usamos @wraps para conservar los metadatos de la función original [10, 11]
+    @wraps(funcion_original)
+    def envoltura(*args, **kwargs):
+        print(f"⚡ Iniciando la envoltura: {funcion_original.__name__}")
+        resultado = funcion_original(*args, **kwargs)
+        print(f"✅ Finalizó la envoltura: {funcion_original.__name__}")
+        return resultado
+    return envoltura
+
+# Aplicamos el decorador usando la elegante sintaxis del '@' [9, 12]
+@registrar_ejecucion
+def cocinar_plato(plato):
+    print(f"🍳 Cocinando {plato}...")
+
+#Llamada a la función decorada:
+cocinar_plato("Pasta")
+#Salida del código:
+#⚡ Iniciando la función: cocinar_plato
+#🍳 Cocinando Pasta...
+#✅ Finalizó la función: cocinar_plato
+
+#determinar el tiempo de ejecucuion de un programa
+import time
+def func_decorador(FuncionOriginal):
+    def func_modificada(n):
+        inicio = time.time()
+        FuncionOriginal(n)
+        fin = time.time()
+        duracion = fin - inicio
+        print(f'duracion: {duracion}')
+    return func_modificada
+ 
+@func_decorador
+def imprimir_numero(n):
+    for i in range(n):
+        print(i)
+imprimir_numero(50)
+
 

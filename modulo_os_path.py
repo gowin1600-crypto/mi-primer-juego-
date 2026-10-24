@@ -1,46 +1,4 @@
 
-
-#***********decoradores para agregar funcionalidad al otra funcion*****************
-from functools import wraps
-# def registrar_ejecucion(funcion_original):
-#     # Usamos @wraps para conservar los metadatos de la función original [10, 11]
-#     @wraps(funcion_original)
-#     def envoltura(*args, **kwargs):
-#         print(f"⚡ Iniciando la envoltura: {funcion_original.__name__}")
-#         resultado = funcion_original(*args, **kwargs)
-#         print(f"✅ Finalizó la envoltura: {funcion_original.__name__}")
-#         return resultado
-#     return envoltura
-
-# # Aplicamos el decorador usando la elegante sintaxis del '@' [9, 12]
-# @registrar_ejecucion
-# def cocinar_plato(plato):
-#     print(f"🍳 Cocinando {plato}...")
-
-# Llamada a la función decorada:
-#---cocinar_plato("Pasta")
-# Salida del código:
-# ⚡ Iniciando la función: cocinar_plato
-# 🍳 Cocinando Pasta...
-# ✅ Finalizó la función: cocinar_plato
-
-import time
-# def func_decorador(FuncionOriginal):
-#     def func_modificada(n):
-#         inicio = time.time()
-#         FuncionOriginal(n)
-#         fin = time.time()
-#         duracion = fin - inicio
-#         print(f'duracion: {duracion}')
-#     return func_modificada
-
-# @func_decorador
-# def imprimir_numero(n):
-#     for i in range(n):
-#         print(i)
-#---imprimir_numero(50)
-
-
 # Código problemático:
 # def agrega(num, target=[]):
 #     target.append(num)
@@ -292,35 +250,164 @@ import os, pathlib
 # las clases derivadas pueden heredar atributos y metodos de las clase bases
 # lo que permite reutilizar el codigo
 
-class Clase_Base:
-    def __init__(self):
-        print('constructor de la clase base')
-    def metodo_clase(self):
-        print('metodo de la clase base')
+# class Clase_Base:
+#     def __init__(self):
+#         print('constructor de la clase base')
+#     def metodo_clase(self):
+#         print('metodo de la clase base')
 
-class Clase_Derivada(Clase_Base):
-    pass
-# si eliminamos el constructor de la clase derivada se toma el otro constructor
-    #def __init__(self):
-        # print('constructor de la clase Derivada')
-#si establecemos otro metodo_clase se tomara este metodo
-    def metodo_clase(self):
-        print('metodo de la clase_Derivada')
+# class Clase_Derivada(Clase_Base):
+#     pass
+# # si eliminamos el constructor de la clase derivada se toma el otro constructor
+#     #def __init__(self):
+#         # print('constructor de la clase Derivada')
+# #si establecemos otro metodo_clase se tomara este metodo
+#     def metodo_clase(self):
+#         print('metodo de la clase_Derivada')
 
-obj = Clase_Derivada()
-obj.metodo_clase()
+# obj = Clase_Derivada()
+# obj.metodo_clase()
 
-#************el metodo super mantiene el construcr de la clase_base
-class Super_base:
-    def __init__(self):
-        print('consrructor de la clase Super_base')
+# #************el metodo super mantiene el construcr de la clase_base
+# class Super_base:
+#     def __init__(self):
+#         print('consrructor de la clase Super_base')
 
-class Derivada_super(Super_base):
-    def __init__(self):
-        super().__init__()# este super mantiene el constructor de la clase base
-        print('constructor de la clase Derivada_super')
-# al crear el objeto se mantienen ambos constructores
-obj = Derivada_super()
+# class Derivada_super(Super_base):
+#     def __init__(self):
+#         super().__init__()# este super mantiene el constructor de la clase base
+#         print('constructor de la clase Derivada_super')
+# # al crear el objeto se mantienen ambos constructores
+# obj = Derivada_super()
+
+#**********herencia de clase ejemplo2 al agregar el  ****************************
+#**********super en la clase gato se llama al metodo  ****************************
+#**********hablar de la clase base Animal  ****************************
+
+# class Animal:
+#     def __init__(self,nombre):
+#         self.nombre = nombre
+#     def hablar(self):
+#         print('se llama al metodo hablar')
+# class Perro(Animal):
+#     def hablar(self):
+#         return 'ladrar'
+# class Gato(Animal):  
+#     def hablar(self):
+# #        super().hablar()
+#         return 'maullar'
+# # #crear objetos de la clase
+# mi_perro = Perro('firulais')
+# mi_gato = Gato('michi')
+# # #imprimir en pantalla los metodos
+# # print(mi_perro.hablar())
+# # print(mi_gato.hablar())
+# # #imprimir los datos del constructor solo hay 1 constructor en las clases
+# # print(mi_perro.nombre)
+# # print(mi_gato.nombre)
+
+# #**************polimorfismo usar una funcion fuera de las clases**********
+# #**************para llamar a las funciones de las clases******************
+# def escuchar_animal(animal):
+#     print(animal.hablar())
+# perro = Perro('firu')
+# gato = Gato('nichi')
+# #llamar a la funcion para llamar al metodo hablar
+# escuchar_animal(perro)
+# escuchar_animal(gato)
+
+#**************decoradores**********************
+def saludar(funcion):
+    print('esto se imprime hantes')
+    funcion()
+def hola():
+    print('hola')
+
+saludar(hola)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
